@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
 
 :root {
+  --item-bg: hsl(0, 0%, 98%);
+  --item-color: hsl(235, 19%, 35%);
   --background: hsl(0, 0%, 98%);
   --background-image: url("./images/bg-desktop-light.jpg");
+  --circle-border: hsl(236, 33%, 92%);
+  --circle-border-active: hsl(236, 9%, 61%);
 }
 
 [data-theme="dark"] {
@@ -47,4 +51,45 @@ body {
 .header__switcher{
   color: white;
   cursor: pointer;
+}
+
+.additem {
+  width: 100%;
+  background-color: var(--item-bg);
+  margin-top: 30px;
+  height: 60px;
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.additem__input{
+  height: 36px;
+  font-size: 20px;
+  color: var(--item-color);
+  background-color: transparent;
+  border: none;
+  opacity: 0.5;
+}
+
+.additem__input:focus,
+.additem__input:active {
+  border: none;
+  outline: none;
+}
+
+.circle {
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 2px solid var(--circle-border);
+  display: inline-block;
+  margin: 0px 15px;
+  cursor: pointer;
+}
+
+.circle:hover {
+  border: 2px solid var(--circle-border-active);
 }
