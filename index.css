@@ -26,6 +26,16 @@ body {
   justify-content: center;
 }
 
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+button:hover, button:active, button:focus {
+  outline: none;
+}
+
 .container {
   width: 550px;
   margin: 75px;
@@ -92,4 +102,55 @@ body {
 
 .circle:hover {
   border: 2px solid var(--circle-border-active);
+}
+
+.list{
+  width: 100%;
+  background-color: var(--item-bg);
+  margin-top: 30px;
+  border-radius: 5px;
+}
+
+.list>ul{
+  margin: 0;
+  padding: 0;
+}
+
+.list__item{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  height: 60px;
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+  color: var(--item-color);
+  border-bottom: 1px solid var(--circle-border);
+}
+
+.list__menu{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px 20px;
+}
+
+.list__menu>button{
+  color: var(--circle-border-active);
+  width: 25%;
+  text-align: end;
+}
+
+.list__menu--count {
+  color: var(--circle-border-active);
+  font-size: 0.9rem;
+  width: 25%;
+}
+
+.list__menu--filters>button {
+  color: var(--circle-border-active);
+  font-weight: 700;
 }
