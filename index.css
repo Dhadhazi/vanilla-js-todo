@@ -7,6 +7,7 @@
   --background-image: url("./images/bg-desktop-light.jpg");
   --circle-border: hsl(236, 33%, 92%);
   --circle-border-active: hsl(236, 9%, 61%);
+  --active-button: hsl(220, 98%, 61%);
 }
 
 [data-theme="dark"] {
@@ -33,6 +34,7 @@ button {
 
 button:hover, button:active, button:focus {
   outline: none;
+  filter: brightness(0.7);
 }
 
 .bg-image {
@@ -150,12 +152,16 @@ button:hover, button:active, button:focus {
   background: linear-gradient(160deg, rgba(87,221,255,1) 0%, rgba(192,88,243,1) 100%);
 }
 
+.completed>span:hover {
+  border: 2px solid var(--circle-border);
+  transform: scale(1.2);
+}
+
 .completed>span::before {
   position: relative;
   left: 5px;
   content: url("./images/icon-check.svg");
 }
-
 
 
 .list__menu{
@@ -172,6 +178,7 @@ button:hover, button:active, button:focus {
   color: var(--circle-border-active);
   width: 25%;
   text-align: end;
+  font-weight: 700;
 }
 
 .list__menu--count {
@@ -183,6 +190,14 @@ button:hover, button:active, button:focus {
 .list__menu--filters>button {
   color: var(--circle-border-active);
   font-weight: 700;
+}
+
+.list__menu--filters>button:active {
+  color: var(--active-button);
+}
+
+#active {
+  color: var(--active-button);
 }
 
 .description{
