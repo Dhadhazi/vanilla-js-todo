@@ -140,6 +140,24 @@ button:hover, button:active, button:focus {
   border-bottom: 1px solid var(--circle-border);
 }
 
+.completed {
+  text-decoration: line-through;
+  color: var(--circle-border)
+}
+
+.completed>span{
+  background: rgb(87,221,255);
+  background: linear-gradient(160deg, rgba(87,221,255,1) 0%, rgba(192,88,243,1) 100%);
+}
+
+.completed>span::before {
+  position: relative;
+  left: 5px;
+  content: url("./images/icon-check.svg");
+}
+
+
+
 .list__menu{
   list-style-type: none;
   padding: 0;
