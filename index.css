@@ -10,6 +10,7 @@
   --active-button: hsl(220, 98%, 61%);
   --moon-animation: reveal;
   --sun-animation: hide;
+  --button-hover-filer: brightness(0.7);
 }
 
 [data-theme="dark"] {
@@ -17,6 +18,11 @@
   --background-image: url("./images/bg-desktop-dark.jpg");
   --moon-animation: hide;
   --sun-animation: reveal;
+  --circle-border: hsl(237, 14%, 26%);
+  --circle-border-active: hsl(233, 14%, 35%);
+  --item-bg: hsl(235, 24%, 19%);
+  --item-color: hsl(234, 39%, 85%);
+  --button-hover-filer: brightness(1.5);
 }
 
 @keyframes reveal {
@@ -58,19 +64,21 @@ button {
 
 button:hover, button:active, button:focus {
   outline: none;
-  filter: brightness(0.7);
+  filter: var(--button-hover-filer);
 }
 
-.bg-image {
+.background {
   position: fixed;
   z-index: -1;
   width: 100%;
   height: 300px;
   top: 0;
-  background-repeat: no-repeat;
-  background-position: top;
-  background-size: cover;
-  background-image: url("./images/bg-desktop-light.jpg");
+}
+
+.background__image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .container {
@@ -85,7 +93,7 @@ button:hover, button:active, button:focus {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: top;
 }
 
 .header__title{
@@ -96,6 +104,7 @@ button:hover, button:active, button:focus {
 }
 
 .header__switcher{
+  position: relative;
   color: white;
   cursor: pointer;
 }
@@ -106,15 +115,20 @@ button:hover, button:active, button:focus {
 
 .header__switcher:hover{
   color: var(--active-button);
+  transform: scale(1.2);
 }
 
 .fa-moon{
   position: absolute;
+  top: 0px;
+  right: 0px;
   animation: var(--moon-animation) 0.3s forwards;
 }
 
 .fa-sun{
   position: absolute;
+  top: 0px;
+  right: 0px;
   animation: var(--sun-animation) 0.3s forwards;
 }
 
@@ -142,6 +156,7 @@ button:hover, button:active, button:focus {
 .additem__input:active {
   border: none;
   outline: none;
+  opacity: 1;
 }
 
 .circle {
