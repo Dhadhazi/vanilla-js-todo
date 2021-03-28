@@ -11,7 +11,7 @@
 }
 
 [data-theme="dark"] {
-  --background: hsl(235, 21%, 11%)
+  --background: hsl(235, 21%, 11%);
   --background-image: url("./images/bg-desktop-dark.jpg");
 }
 
@@ -74,6 +74,10 @@ button:hover, button:active, button:focus {
 .header__switcher{
   color: white;
   cursor: pointer;
+}
+
+.header__switcher:hover{
+  color: var(--active-button);
 }
 
 .additem {
