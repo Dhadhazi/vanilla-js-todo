@@ -31,9 +31,6 @@ todoList.forEach((todo) => {
   const element = document.createElement("li");
   element.classList.add("list__item");
   if (todo.completed) element.classList.add("completed");
-  const circleEl = document.createElement("button");
-  circleEl.classList.add("circle");
-  element.appendChild(circleEl);
-  element.textContent = todo.name;
+  element.innerHTML = '<button class="circle"></button>' + todo.name;
   todoListContainer.prepend(element);
 });
