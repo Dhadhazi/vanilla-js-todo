@@ -264,16 +264,16 @@ button:hover, button:active, button:focus {
   opacity: 0.6;
 }
 
-#addtodo{
+#addtodoButton{
   opacity: 1;
   font-size: 20px;
 }
 
-#addtodo:hover{
+#addtodoButton:hover{
   background-color: var(--circle-border-active);
 }
 
-#addtodo::before {
+#addtodoButton::before {
   position: relative;
   right: 3px;
   top: -4px;
