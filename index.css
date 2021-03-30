@@ -265,14 +265,19 @@ button:hover, button:active, button:focus {
   opacity: 0.6;
 }
 
+#addtodo{
+  opacity: 1;
+  font-size: 20px;
+}
+
 #addtodo:hover{
-  background: rgb(87,221,255);
-  background: linear-gradient(160deg, rgba(87,221,255,1) 0%, rgba(192,88,243,1) 100%);
+  background-color: var(--circle-border-active);
 }
 
 #addtodo::before {
   position: relative;
-  left: 5px;
+  right: 3px;
+  top: -4px;
   font-weight: 700;
   color: var(--item-color);
   content: "+";
