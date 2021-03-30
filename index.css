@@ -64,7 +64,6 @@ button {
 
 button:hover, button:active, button:focus {
   outline: none;
-  filter: var(--button-hover-filer);
 }
 
 .background {
@@ -204,19 +203,19 @@ button:hover, button:active, button:focus {
   color: var(--circle-border)
 }
 
-.completed>span{
+.completed>button{
   background: rgb(87,221,255);
   background: linear-gradient(160deg, rgba(87,221,255,1) 0%, rgba(192,88,243,1) 100%);
 }
 
-.completed>span:hover {
+.completed>button:hover {
   border: 2px solid var(--circle-border);
   transform: scale(1.2);
 }
 
-.completed>span::before {
+.completed>button::before {
   position: relative;
-  left: 5px;
+  right: 3px;
   content: url("./images/icon-check.svg");
 }
 
