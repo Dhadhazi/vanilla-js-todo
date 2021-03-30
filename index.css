@@ -265,5 +265,15 @@ button:hover, button:active, button:focus {
   opacity: 0.6;
 }
 
+#addtodo:hover{
+  background: rgb(87,221,255);
+  background: linear-gradient(160deg, rgba(87,221,255,1) 0%, rgba(192,88,243,1) 100%);
+}
 
-
+#addtodo::before {
+  position: relative;
+  left: 5px;
+  font-weight: 700;
+  color: var(--item-color);
+  content: "+";
+}
