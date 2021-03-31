@@ -3,6 +3,7 @@ const backgroundImage = document.getElementById("backgroundImage");
 const addTodoButton = document.getElementById("addtodoButton");
 const todoListContainer = document.getElementById("todoListContainer");
 const inputElement = document.getElementById("additemInput");
+const countTasks = document.getElementById("countTasks");
 
 const LIGHT_THEME = "light";
 const DARK_THEME = "dark";
@@ -27,8 +28,16 @@ function switchTheme() {
   changeElements(theme);
 }
 
+function getIncompleteItems() {
+  return todoList.reduce(
+    (acc, curr) => (!curr.completed ? (acc += 1) : acc),
+    0
+  );
+}
+
 function updateDOM() {
   todoListContainer.innerHTML = "";
+  countTasks.innerHTML = `${getIncompleteItems()} items left`;
   displayTodoList();
 }
 
@@ -74,4 +83,4 @@ function displayTodoList() {
 
 addTodoButton.addEventListener("click", addTodo);
 
-displayTodoList();
+updateDOM();
