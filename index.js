@@ -28,7 +28,7 @@ themeSwitchButton.addEventListener("click", switchTheme);
 
 function addTodo() {
   todoList.push({
-    id: todoList.length,
+    id: todoList.length + 1,
     name: inputElement.value,
     completed: false,
   });
@@ -53,12 +53,18 @@ function toggleComplete(id) {
   updateDOM();
 }
 
+function deleteTodo(id) {
+  console.log(id);
+  todoList = todoList.filter((todo) => todo.id != id);
+  updateDOM();
+}
+
 function displayTodoList() {
   todoList.forEach((todo) => {
     const element = document.createElement("li");
     element.classList.add("list__item");
     if (todo.completed) element.classList.add("completed");
-    element.innerHTML = `<button class="circle" onclick="toggleComplete(${todo.id})"></button>${todo.name}<button class="close"><img src="images/icon-cross.svg"></button>`;
+    element.innerHTML = `<button class="circle" onclick="toggleComplete(${todo.id})"></button>${todo.name}<button class="close" onclick="deleteTodo(${todo.id})"><img src="images/icon-cross.svg"></button>`;
     todoListContainer.prepend(element);
   });
 }
