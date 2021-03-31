@@ -64,6 +64,11 @@ function setActiveFilter(filter) {
   if (filter === "completed") filterCompleted.classList.add("activeFilter");
 }
 
+function clearCompelted() {
+  todoList = todoList.filter((todo) => todo.completed != true);
+  setFilter("all");
+}
+
 function getIncompleteItems() {
   return todoList.reduce(
     (acc, curr) => (!curr.completed ? (acc += 1) : acc),
