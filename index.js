@@ -44,7 +44,7 @@ function displayTodoList() {
     const element = document.createElement("li");
     element.classList.add("list__item");
     if (todo.completed) element.classList.add("completed");
-    element.innerHTML = '<button class="circle"></button>' + todo.name;
+    element.innerHTML = `<button class="circle"></button>${todo.name}<button class="close"><img src="images/icon-cross.svg"></button>`;
     todoListContainer.prepend(element);
   });
 }

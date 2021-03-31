@@ -144,6 +144,7 @@ button:hover, button:active, button:focus {
 
 .additem__input{
   height: 36px;
+  width: 80%;
   font-size: 20px;
   color: var(--item-color);
   background-color: transparent;
@@ -173,6 +174,7 @@ button:hover, button:active, button:focus {
   border: 2px solid var(--circle-border-active);
 }
 
+
 .list{
   width: 100%;
   background-color: var(--item-bg);
@@ -187,8 +189,12 @@ button:hover, button:active, button:focus {
 }
 
 .list__item{
+  position: relative;
+  cursor: pointer;
+  width: 90%;
   list-style-type: none;
   padding: 0;
+  padding-right: 10%;
   margin: 0;
   height: 60px;
   display: flex;
@@ -203,22 +209,42 @@ button:hover, button:active, button:focus {
   color: var(--circle-border)
 }
 
-.completed>button{
+.completed>button:nth-child(1){
   background: rgb(87,221,255);
   background: linear-gradient(160deg, rgba(87,221,255,1) 0%, rgba(192,88,243,1) 100%);
 }
 
-.completed>button:hover {
+.completed>button:nth-child(1):hover {
   border: 2px solid var(--circle-border);
   transform: scale(1.2);
 }
 
-.completed>button::before {
+.completed>button:nth-child(1)::before {
   position: relative;
   right: 3px;
   content: url("./images/icon-check.svg");
 }
 
+ {
+}
+
+.close {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+.close>img{
+  display: none;
+}
+
+.list__item:hover .close>img{
+   display: block;
+}
 
 .list__menu{
   list-style-type: none;
