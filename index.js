@@ -5,6 +5,10 @@ const todoListContainer = document.getElementById("todoListContainer");
 const inputElement = document.getElementById("additemInput");
 const countTasks = document.getElementById("countTasks");
 
+const filterAll = document.getElementById("filterAll");
+const filterActive = document.getElementById("filterActive");
+const filterCompleted = document.getElementById("filterCompleted");
+
 const LIGHT_THEME = "light";
 const DARK_THEME = "dark";
 
@@ -14,6 +18,8 @@ let todoList = [
   { id: 1, name: "Complete online JavaScript Course", completed: true },
   { id: 2, name: "Jog around the park 3x", completed: false },
 ];
+
+let filteredList = todoList;
 
 // Theme Functions
 themeSwitchButton.addEventListener("click", switchTheme);
@@ -26,6 +32,36 @@ function switchTheme() {
   theme = theme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME;
   document.documentElement.setAttribute("data-theme", theme);
   changeElements(theme);
+}
+
+// Filter items
+filterAll.addEventListener("click", () => setFilter("all"));
+filterActive.addEventListener("click", () => setFilter("active"));
+filterCompleted.addEventListener("click", () => setFilter("completed"));
+
+function setFilter(filter) {
+  setActiveFilter(filter);
+  switch (filter) {
+    case "active":
+      filteredList = todoList.filter((todo) => todo.completed === false);
+      break;
+    case "completed":
+      filteredList = todoList.filter((todo) => todo.completed === true);
+      break;
+    default:
+      filteredList = todoList;
+      break;
+  }
+  updateDOM();
+}
+
+function setActiveFilter(filter) {
+  filterAll.classList.remove("activeFilter");
+  filterActive.classList.remove("activeFilter");
+  filterCompleted.classList.remove("activeFilter");
+  if (filter === "all") filterAll.classList.add("activeFilter");
+  if (filter === "active") filterActive.classList.add("activeFilter");
+  if (filter === "completed") filterCompleted.classList.add("activeFilter");
 }
 
 function getIncompleteItems() {
@@ -75,7 +111,7 @@ function createTodoElement(todo) {
 }
 
 function displayTodoList() {
-  todoList.forEach((todo) => {
+  filteredList.forEach((todo) => {
     const element = createTodoElement(todo);
     todoListContainer.prepend(element);
   });

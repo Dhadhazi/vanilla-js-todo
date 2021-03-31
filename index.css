@@ -225,9 +225,6 @@ button:hover, button:active, button:focus {
   content: url("./images/icon-check.svg");
 }
 
- {
-}
-
 .close {
   position: absolute;
   display: flex;
@@ -269,18 +266,19 @@ button:hover, button:active, button:focus {
   width: 25%;
 }
 
-.list__menu--filters>button {
+.filter {
   color: var(--circle-border-active);
   font-weight: 700;
 }
 
-.list__menu--filters>button:active {
+.filter:active {
   color: var(--active-button);
 }
 
-#active {
+.activeFilter {
   color: var(--active-button);
 }
+
 
 .description{
   margin-top: 40px;
