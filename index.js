@@ -14,6 +14,9 @@ let todoList = [
   { id: 2, name: "Jog around the park 3x", completed: false },
 ];
 
+// Theme Functions
+themeSwitchButton.addEventListener("click", switchTheme);
+
 function changeElements(theme) {
   backgroundImage.src = `./images/bg-desktop-${theme}.jpg`;
 }
@@ -24,7 +27,10 @@ function switchTheme() {
   changeElements(theme);
 }
 
-themeSwitchButton.addEventListener("click", switchTheme);
+function updateDOM() {
+  todoListContainer.innerHTML = "";
+  displayTodoList();
+}
 
 function addTodo() {
   todoList.push({
@@ -34,13 +40,6 @@ function addTodo() {
   });
   updateDOM();
   inputElement.value = "";
-}
-
-addTodoButton.addEventListener("click", addTodo);
-
-function updateDOM() {
-  todoListContainer.innerHTML = "";
-  displayTodoList();
 }
 
 function toggleComplete(id) {
@@ -54,19 +53,25 @@ function toggleComplete(id) {
 }
 
 function deleteTodo(id) {
-  console.log(id);
   todoList = todoList.filter((todo) => todo.id != id);
   updateDOM();
 }
 
+function createTodoElement(todo) {
+  const element = document.createElement("li");
+  element.classList.add("list__item");
+  if (todo.completed) element.classList.add("completed");
+  element.innerHTML = `<button class="circle" onclick="toggleComplete(${todo.id})"></button>${todo.name}<button class="close" onclick="deleteTodo(${todo.id})"><img src="images/icon-cross.svg"></button>`;
+  return element;
+}
+
 function displayTodoList() {
   todoList.forEach((todo) => {
-    const element = document.createElement("li");
-    element.classList.add("list__item");
-    if (todo.completed) element.classList.add("completed");
-    element.innerHTML = `<button class="circle" onclick="toggleComplete(${todo.id})"></button>${todo.name}<button class="close" onclick="deleteTodo(${todo.id})"><img src="images/icon-cross.svg"></button>`;
+    const element = createTodoElement(todo);
     todoListContainer.prepend(element);
   });
 }
+
+addTodoButton.addEventListener("click", addTodo);
 
 displayTodoList();
