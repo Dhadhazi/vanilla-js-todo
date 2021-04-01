@@ -17,10 +17,16 @@ let theme = LIGHT_THEME;
 let todoList = [
   { id: 1, name: "Complete online JavaScript Course", completed: true },
   { id: 2, name: "Jog around the park 3x", completed: false },
+  { id: 3, name: "Complete  JavaScript Course", completed: true },
+  { id: 4, name: "Jog  the park 3x", completed: false },
 ];
 
 let filteredList = todoList;
 let activeFilter = "all";
+
+let draggedItem;
+let dragging = false;
+let itemItIsOver;
 
 // Theme Functions
 themeSwitchButton.addEventListener("click", switchTheme);
@@ -69,11 +75,6 @@ function setActiveFilterButtonState(filter) {
   if (filter === "completed") filterCompleted.classList.add("activeFilter");
 }
 
-function clearCompelted() {
-  todoList = todoList.filter((todo) => todo.completed != true);
-  setFilter("all");
-}
-
 function getIncompleteItems() {
   return todoList.reduce(
     (acc, curr) => (!curr.completed ? (acc += 1) : acc),
@@ -81,12 +82,7 @@ function getIncompleteItems() {
   );
 }
 
-function updateDOM() {
-  todoListContainer.innerHTML = "";
-  countTasks.innerHTML = `${getIncompleteItems()} items left`;
-  filterTodoList(activeFilter);
-  displayTodoList();
-}
+// Functionalities
 
 function addTodo() {
   todoList.push({
@@ -113,11 +109,51 @@ function deleteTodo(id) {
   updateDOM();
 }
 
+function clearCompelted() {
+  todoList = todoList.filter((todo) => todo.completed != true);
+  setFilter("all");
+}
+
+// Drag and drop related functions
+function drag(e) {
+  draggedItem = e.target;
+  dragging = true;
+}
+
+function drop(event) {
+  event.preventDefault();
+  const dropPlaceId = parseInt(itemItIsOver.getAttribute("todoid"));
+  const dorpItemId = parseInt(event.target.getAttribute("todoid"));
+  let itemToInsert;
+  let placeToInsert;
+  for (let i = 0; i < todoList.length; i++) {
+    if (todoList[i].id === dorpItemId) {
+      itemToInsert = Object.assign(todoList[i]);
+    }
+    if (todoList[i].id === dropPlaceId) placeToInsert = i;
+  }
+  todoList = todoList.filter((todo) => todo.id != itemToInsert.id);
+  const firstHalf = todoList.slice(0, placeToInsert);
+  const secondHalf = todoList.slice(placeToInsert);
+  todoList = [...firstHalf, itemToInsert, ...secondHalf];
+
+  updateDOM();
+}
+
+function dragEntered(e) {
+  itemItIsOver = e.target;
+}
+
 function createTodoElement(todo) {
   const element = document.createElement("li");
+  element.setAttribute("todoid", todo.id);
   element.classList.add("list__item");
   if (todo.completed) element.classList.add("completed");
   element.innerHTML = `<button class="circle" onclick="toggleComplete(${todo.id})"></button>${todo.name}<button class="close" onclick="deleteTodo(${todo.id})"><img src="images/icon-cross.svg"></button>`;
+  element.draggable = true;
+  element.setAttribute("ondragstart", "drag(event)");
+  element.setAttribute("ondragenter", "dragEntered(event)");
+  element.setAttribute("ondragend", "drop(event)");
   return element;
 }
 
@@ -126,6 +162,12 @@ function displayTodoList() {
     const element = createTodoElement(todo);
     todoListContainer.prepend(element);
   });
+}
+function updateDOM() {
+  todoListContainer.innerHTML = "";
+  countTasks.innerHTML = `${getIncompleteItems()} items left`;
+  filterTodoList(activeFilter);
+  displayTodoList();
 }
 
 addTodoButton.addEventListener("click", addTodo);
