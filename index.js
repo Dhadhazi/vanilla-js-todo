@@ -20,6 +20,7 @@ let todoList = [
 ];
 
 let filteredList = todoList;
+let activeFilter = "all";
 
 // Theme Functions
 themeSwitchButton.addEventListener("click", switchTheme);
@@ -40,7 +41,12 @@ filterActive.addEventListener("click", () => setFilter("active"));
 filterCompleted.addEventListener("click", () => setFilter("completed"));
 
 function setFilter(filter) {
-  setActiveFilter(filter);
+  setActiveFilterButtonState(filter);
+  activeFilter = filter;
+  updateDOM();
+}
+
+function filterTodoList(filter) {
   switch (filter) {
     case "active":
       filteredList = todoList.filter((todo) => todo.completed === false);
@@ -52,10 +58,9 @@ function setFilter(filter) {
       filteredList = todoList;
       break;
   }
-  updateDOM();
 }
 
-function setActiveFilter(filter) {
+function setActiveFilterButtonState(filter) {
   filterAll.classList.remove("activeFilter");
   filterActive.classList.remove("activeFilter");
   filterCompleted.classList.remove("activeFilter");
@@ -79,6 +84,7 @@ function getIncompleteItems() {
 function updateDOM() {
   todoListContainer.innerHTML = "";
   countTasks.innerHTML = `${getIncompleteItems()} items left`;
+  filterTodoList(activeFilter);
   displayTodoList();
 }
 
