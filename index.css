@@ -254,6 +254,8 @@ button:hover, button:active, button:focus {
   margin: 15px 20px;
 }
 
+
+
 .list__menu>button{
   color: var(--circle-border-active);
   width: 25%;
@@ -283,22 +285,6 @@ button:hover, button:active, button:focus {
   align-items: center;
 }
 
-
-
-@media(max-width: 700px) {
-  .list__menu--filters{
-    display: none;
-  }
-.list__menu>button{
-  width: 50%;
-}
-.list__menu--count {
-  width: 50%;
-}
-
-}
-
-
 .activeFilter {
   color: var(--active-button);
 }
@@ -306,7 +292,6 @@ button:hover, button:active, button:focus {
 .dragIsOverThis {
   margin-top: 60px;
 }
-
 
 .description{
   margin-top: 40px;
@@ -332,4 +317,36 @@ button:hover, button:active, button:focus {
   font-weight: 700;
   color: var(--item-color);
   content: "+";
+}
+
+.undermenu{
+  display: none;
+}
+
+@media(max-width: 700px) {
+  .container{
+    margin: 5vw;
+  }
+  .list__menu--filters{
+    display: none;
+  }
+  .list__menu>button{
+    width: 50%;
+  }
+  .list__menu--count {
+    width: 50%;
+  }
+  .undermenu{
+    margin-top: 20px;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .filter{
+    font-size: 16px;
+  }
+
 }
