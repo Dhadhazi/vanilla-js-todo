@@ -4,4 +4,4 @@ A simple todo list just for daily coding practice with vanilla js/css/html. Drag
 
 The design is from FrontendMentor site. 
 
-(Live Code)[https://dhadhazi.github.io/vanilla-js-todo/]
+[Live Version](https://dhadhazi.github.io/vanilla-js-todo/)
