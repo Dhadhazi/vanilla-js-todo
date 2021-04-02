@@ -5,9 +5,9 @@ const todoListContainer = document.getElementById("todoListContainer");
 const inputElement = document.getElementById("additemInput");
 const countTasks = document.getElementById("countTasks");
 
-const filterAll = document.getElementById("filterAll");
-const filterActive = document.getElementById("filterActive");
-const filterCompleted = document.getElementById("filterCompleted");
+const filterAll = document.querySelectorAll(".filterAll");
+const filterActive = document.getElementsByClassName("filterActive");
+const filterCompleted = document.getElementsByClassName("filterCompleted");
 
 const LIGHT_THEME = "light";
 const DARK_THEME = "dark";
@@ -41,9 +41,11 @@ function switchTheme() {
 }
 
 // Filter items
-filterAll.addEventListener("click", () => setFilter("all"));
-filterActive.addEventListener("click", () => setFilter("active"));
-filterCompleted.addEventListener("click", () => setFilter("completed"));
+for (let i = 0; i < filterAll.length; i++) {
+  filterAll[i].addEventListener("click", () => setFilter("all"));
+  filterActive[i].addEventListener("click", () => setFilter("active"));
+  filterCompleted[i].addEventListener("click", () => setFilter("completed"));
+}
 
 function setFilter(filter) {
   setActiveFilterButtonState(filter);
@@ -66,12 +68,15 @@ function filterTodoList(filter) {
 }
 
 function setActiveFilterButtonState(filter) {
-  filterAll.classList.remove("activeFilter");
-  filterActive.classList.remove("activeFilter");
-  filterCompleted.classList.remove("activeFilter");
-  if (filter === "all") filterAll.classList.add("activeFilter");
-  if (filter === "active") filterActive.classList.add("activeFilter");
-  if (filter === "completed") filterCompleted.classList.add("activeFilter");
+  for (let i = 0; i < filterAll.length; i++) {
+    filterAll[i].classList.remove("activeFilter");
+    filterActive[i].classList.remove("activeFilter");
+    filterCompleted[i].classList.remove("activeFilter");
+    if (filter === "all") filterAll[i].classList.add("activeFilter");
+    if (filter === "active") filterActive[i].classList.add("activeFilter");
+    if (filter === "completed")
+      filterCompleted[i].classList.add("activeFilter");
+  }
 }
 
 function getIncompleteItems() {
