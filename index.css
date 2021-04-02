@@ -244,6 +244,7 @@ button:hover, button:active, button:focus {
 }
 
 .list__menu{
+  position: relative;
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -274,6 +275,29 @@ button:hover, button:active, button:focus {
 .filter:active {
   color: var(--active-button);
 }
+
+.list__menu--filters{
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+@media(max-width: 700px) {
+  .list__menu--filters{
+    display: none;
+  }
+.list__menu>button{
+  width: 50%;
+}
+.list__menu--count {
+  width: 50%;
+}
+
+}
+
 
 .activeFilter {
   color: var(--active-button);
