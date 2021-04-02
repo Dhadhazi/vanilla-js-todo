@@ -23,17 +23,26 @@
     <div class="container">
       <div class="header">
         <div class="header__title">TODO</div>
-        <button class="header__switcher" id="themeSwitch-button">
+        <button
+          class="header__switcher"
+          id="themeSwitch-button"
+          aria-label="Theme switcher"
+        >
           <i class="fas fa-moon fa-2x"></i>
           <i class="fas fa-sun fa-2x"></i>
         </button>
       </div>
       <div class="additem">
-        <button class="circle" id="addtodoButton"></button>
+        <button
+          class="circle"
+          id="addtodoButton"
+          aria-label="Add Todo"
+        ></button>
         <input
           type="text"
           class="additem__input"
           id="additemInput"
+          aria-label="Task input"
           placeholder="Create a new todo..."
         />
       </div>
@@ -43,9 +52,24 @@
           <li class="list__menu">
             <div class="list__menu--count" id="countTasks"></div>
             <div class="list__menu--filters">
-              <button class="filter activeFilter filterAll">All</button>
-              <button class="filter filterActive">Active</button>
-              <button class="filter filterCompleted">Completed</button>
+              <button
+                class="filter activeFilter filterAll"
+                aria-label="Filter for all"
+              >
+                All
+              </button>
+              <button
+                class="filter filterActive"
+                aria-label="Filter for Active"
+              >
+                Active
+              </button>
+              <button
+                class="filter filterCompleted"
+                aria-label="Filter for Completed"
+              >
+                Completed
+              </button>
             </div>
             <button onclick="clearCompelted()">Clear Completed</button>
           </li>
@@ -53,9 +77,21 @@
       </div>
 
       <div class="list undermenu">
-        <button class="filter activeFilter filterAll">All</button>
-        <button class="filter filterActive">Active</button>
-        <button class="filter filterCompleted">Completed</button>
+        <button
+          class="filter activeFilter filterAll"
+          aria-label="Filter for all"
+        >
+          All
+        </button>
+        <button class="filter filterActive" aria-label="Filter for Active">
+          Active
+        </button>
+        <button
+          class="filter filterCompleted"
+          aria-label="Filter for Completed"
+        >
+          Completed
+        </button>
       </div>
       <div class="description">Drag and drop to reorder list</div>
     </div>

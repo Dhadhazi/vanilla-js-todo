@@ -157,7 +157,7 @@ function createTodoElement(todo) {
   element.setAttribute("todoid", todo.id);
   element.classList.add("list__item");
   if (todo.completed) element.classList.add("completed");
-  element.innerHTML = `<button class="circle" onclick="toggleComplete(${todo.id})"></button>${todo.name}<button class="close" onclick="deleteTodo(${todo.id})"><img src="images/icon-cross.svg"></button>`;
+  element.innerHTML = `<button class="circle" onclick="toggleComplete(${todo.id})" aria-label="Button for task completion"></button>${todo.name}<button class="close" onclick="deleteTodo(${todo.id})"><img src="images/icon-cross.svg" alt="Delete task"></button>`;
   element.draggable = true;
   element.setAttribute("ondragstart", "drag(event)");
   element.setAttribute("ondragenter", "dragEntered(event)");
