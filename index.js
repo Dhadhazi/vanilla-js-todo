@@ -25,7 +25,6 @@ let filteredList = todoList;
 let activeFilter = "all";
 
 let draggedItem;
-let dragging = false;
 let itemItIsOver;
 
 // Theme Functions
@@ -117,11 +116,11 @@ function clearCompelted() {
 // Drag and drop related functions
 function drag(e) {
   draggedItem = e.target;
-  dragging = true;
 }
 
 function drop(event) {
   event.preventDefault();
+  itemItIsOver.classList.remove("dragIsOverThis");
   const dropPlaceId = parseInt(itemItIsOver.getAttribute("todoid"));
   const dorpItemId = parseInt(event.target.getAttribute("todoid"));
   let itemToInsert;
@@ -141,8 +140,12 @@ function drop(event) {
 }
 
 function dragEntered(e) {
+  if (itemItIsOver) itemItIsOver.classList.remove("dragIsOverThis");
   itemItIsOver = e.target;
+  e.target.classList.add("dragIsOverThis");
 }
+
+function dragLeave(e) {}
 
 function createTodoElement(todo) {
   const element = document.createElement("li");
@@ -153,6 +156,7 @@ function createTodoElement(todo) {
   element.draggable = true;
   element.setAttribute("ondragstart", "drag(event)");
   element.setAttribute("ondragenter", "dragEntered(event)");
+  element.setAttribute("ondragleave", "dragLeave(event)");
   element.setAttribute("ondragend", "drop(event)");
   return element;
 }

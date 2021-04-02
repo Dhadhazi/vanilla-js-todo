@@ -279,6 +279,10 @@ button:hover, button:active, button:focus {
   color: var(--active-button);
 }
 
+.dragIsOverThis {
+  margin-top: 60px;
+}
+
 
 .description{
   margin-top: 40px;
